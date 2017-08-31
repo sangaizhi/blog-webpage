@@ -1,0 +1,33 @@
+::-webkit-input-placeholder { /* WebKit browsers */
+　　color:#FFFFFF;
+}
+::-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+　　color:#FFFFFF;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+　　color:#FFFFFF;
+}
+::-ms-input-placeholder { /* Internet Explorer 10+ */
+　　color:#FFFFFF;
+}
+html{
+	margin: 0;
+	padding: 0;
+	background-color: #f0f3f4;
+}
+a{
+	text-decoration: none;
+}
+.bg-success{
+	background-color: #13CE66;
+}
+.bg-warn{
+	background-color: #F7BA2A;
+}
+.bg-danger{
+	background-color: #FF4949;
+}
+.hide{
+	display: none !important;
+}
+

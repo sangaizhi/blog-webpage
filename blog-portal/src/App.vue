@@ -1,19 +1,26 @@
 <template>
 	<div id="app">
-		<router-view class='view'></router-view>
+		<leftNav></leftNav>
+		<div class="main" id="main">
+			<router-view class='view'></router-view>
+			<router-view class='view' name='other'></router-view>
+		</div>
 	</div>
 </template>
 
 <script>
-	import * as types from './store/types'
-	import { mapState } from 'vuex'
+	import * as types from './store/types';
+	import leftNav from './components/leftNav.vue';
+//	import container from './components/container.vue';
+	import { mapState } from 'vuex';
 	export default {
 		name: 'app',
 		data() {
 			return {
-				msg: 'Welcome to Your Vue.js App',
+				msg: 'Welcome to Your Vue.js App'
 			}
 		},
+		components:{leftNav},
 		computed: mapState({
 			title: state => state.title,
 			token: state => state.token

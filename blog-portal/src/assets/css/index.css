@@ -10,10 +10,11 @@
 ::-ms-input-placeholder { /* Internet Explorer 10+ */
 　　color:#FFFFFF;
 }
-html{
+html, body{
 	margin: 0;
 	padding: 0;
 	background-color: #f0f3f4;
+	overflow: hidden;
 }
 a{
 	text-decoration: none;
@@ -30,4 +31,23 @@ a{
 .hide{
 	display: none !important;
 }
-
+.clear{
+	clear:both;
+}
+.view{
+	/*height: -moz-calc(100% - 50pclass="main"x);
+	height: -webkit-calc(100% - 50px);
+	height: calc(100% - 50px);
+	width: -moz-calc(100% - 200px);
+	width: -webkit-calc(100% - 200px);
+	width: calc(100% - 200px);*/
+}
+.main{
+	margin:50px 0 0 200px;
+	height: -moz-calc(100% - 50px);
+	height: -webkit-calc(100% - 50px);
+	height: calc(100% - 50px);
+	width: -moz-calc(100% - 200px);
+	width: -webkit-calc(100% - 200px);
+	width: calc(100% - 200px);
+}

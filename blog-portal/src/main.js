@@ -4,25 +4,23 @@ import App from './App.vue'
 // 引入网络请求与资源组件
 import VueResource from 'vue-resource';
 // 引入 element UI 组件
-import ElementUI from 'element-ui';
 // 引入图标组件
 import Icon from './components/Icon.vue';
 
-import 'element-ui/lib/theme-default/index.css';
 import './assets/css/index.css';
 import 'font-awesome/css/font-awesome.css';
+import $ from 'jquery';
 import './icons/index.js';
 //引入路由组件
-import {axios,fetch,patch,post,put} from './util/http'
-import store from './store/store'
-import router from './router'
+import {axios,fetch,patch,post,put} from './util/http';
+import store from './store/store';
+import router from './router';
 
 //开启debug模式
 Vue.config.debug = true;
 
 //Vue.use(VueRouter);
 Vue.use(VueResource);
-Vue.use(ElementUI);
 Vue.component("icon", Icon);
 
 

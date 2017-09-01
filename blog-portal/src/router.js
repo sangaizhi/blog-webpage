@@ -6,25 +6,40 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store/store'
 import * as types from './store/types';
-import App from './App.vue';
-import Index from "./components/index.vue";
-import Login from './components/login.vue';
 import axiosInstance from './util/http';
+
+import App from './App.vue';
+import leftNav from './components/leftNav.vue';
+import container from './components/container.vue';
+import login from './components/login.vue';
+import articleList from './components/articleList.vue';
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+	{
 		path: '/',
 		name: '/',
-		component: Index,
+		components:{
+			other:articleList
+		},
 		meta: {
-			requireAuth: false,
+			requireAuth: false
 		},
 	},
 	{
 		path: '/login',
-		name: 'login',
-		component: Login
+		name: '登录',
+		component: login
+	},
+	{
+		path: '/articleList/:categoryId',
+		name: '',
+		component:articleList,
+		meta: {
+			requireAuth: false,
+			breadNumber: 1
+		},
 	}
 ];
 

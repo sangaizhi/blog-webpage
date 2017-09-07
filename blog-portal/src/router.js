@@ -9,10 +9,10 @@ import * as types from './store/types';
 import axiosInstance from './util/http';
 
 import App from './App.vue';
-import leftNav from './components/leftNav.vue';
+import leftNav from './components/navigation/leftNav.vue';
 import container from './components/container.vue';
-import login from './components/login.vue';
-import articleList from './components/articleList.vue';
+import login from './components/user/login.vue';
+import articleList from './components/article/articleList.vue';
 
 Vue.use(VueRouter)
 
@@ -34,7 +34,7 @@ const routes = [
 	},
 	{
 		path: '/articleList/:categoryId',
-		name: '',
+		name: ':name',
 		component:articleList,
 		meta: {
 			requireAuth: false,

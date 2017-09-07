@@ -10,7 +10,7 @@
 
 <script>
 	import * as types from './store/types';
-	import leftNav from './components/leftNav.vue';
+	import leftNav from './components/navigation/leftNav.vue';
 //	import container from './components/container.vue';
 	import { mapState } from 'vuex';
 	export default {
@@ -43,6 +43,13 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-align: center;
 		color: #2c3e50;
+		position: absolute;
+		left:0;
+		right: 0;
+		top:0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
 	}
 	
 	h1,

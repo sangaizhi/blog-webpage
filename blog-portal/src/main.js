@@ -5,7 +5,7 @@ import App from './App.vue'
 import VueResource from 'vue-resource';
 // 引入 element UI 组件
 // 引入图标组件
-import Icon from './components/Icon.vue';
+import Icon from './components/icon/Icon.vue';
 
 import './assets/css/index.css';
 import 'font-awesome/css/font-awesome.css';

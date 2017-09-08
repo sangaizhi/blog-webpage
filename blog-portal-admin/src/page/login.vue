@@ -10,7 +10,7 @@
 			<div class="login-form-container">
 				<el-form :model="loginUser" action='/login'>
 					<el-col :span="24" class='form-title'>
-						<label class="">Z-Blog</label>
+						<label class="">Z-Blsog</label>
 					</el-col>
 					<el-form-item>
 						<el-input v-model="loginUser.account" v-validate="'required|loginUserAccount'" name='loginUserAccount'></el-input>
@@ -27,10 +27,9 @@
 			</div>
 		</el-row>
 	</div>
-
 </template>
 <script>
-		import * as types from '../store/types';
+	import * as types from '../store/types';
 	import { userLogin } from "../api/api.js";
 	import { saveUser, saveToken } from "../util/user.js";
 	export default {
@@ -52,12 +51,11 @@
 							name: 'sangaizhi',
 							avatar: 'https://avatars2.githubusercontent.com/u/17513528?v=4&s=460',
 						};
-//						saveToken("QWERTYUIOP");
+						//						saveToken("QWERTYUIOP");
 						saveUser(user);
 						self.token = "QWERTYUIOP";
 						// 此操作会将token 保存待localStorage
-					  self.$store.commit(types.LOGIN, self.token);
-					  console.log(self.$store.state.token)
+						self.$store.commit(types.LOGIN, self.token);
 						let redirect = decodeURIComponent(self.$route.query.redirect || '/');
 						self.$router.push({
 							path: "/home"

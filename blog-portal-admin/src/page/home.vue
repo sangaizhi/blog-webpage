@@ -27,6 +27,12 @@
 		overflow: hidden;
 	}
 	.content-container{
-		overflow: auto;
+		overflow: hidden;
+		margin: 50px 0 0 200px;
+		width: calc(100% - 200px);
+		height: calc(100% - 50px);
+		position: absolute;
+		left: 0;
+		top: 0;
 	}
 </style>

@@ -8,6 +8,8 @@ import store from '../store/store.js';
 import * as types from '../store/types.js';
 import login from '../page/login.vue';
 import home from '../page/home.vue';
+import categoryList from '../page/category/list.vue';
+import categoryAdd from '../page/category/add.vue';
 // import axiosInstance from '../util/http';
 
 Vue.use(VueRouter)
@@ -34,7 +36,22 @@ const routes = [{
 		component: home,
 		meta: {
 			requireAuth: true,
-		}
+		},
+		children: [{
+				path: 'category/list',
+				component: categoryList,
+				meta: {
+					requireAuth: true,
+				}
+			},
+			{
+				path: 'category/add',
+				component: categoryAdd,
+				meta: {
+					requireAuth: true,
+				}
+			}
+		]
 	}
 ];
 
@@ -46,7 +63,6 @@ if(window.localStorage.getItem('token')) {
 const router = new VueRouter({
 	routes
 });
-
 
 // 路由拦截器，
 router.beforeEach((to, from, next) => {

@@ -7,30 +7,44 @@
 		<el-menu default-active="1-4-1" class="left-nav-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse" theme="dark">
 			<el-submenu index="1" class='sub_menu'>
 				<template slot="title" class="sub_menu_title">
-					<i class="el-icon-message"></i>
+					<i class="fa fa-bars"></i>
 					<span slot="title">导航管理</span>
 				</template>
 				<el-menu-item-group>
-					<span slot="title">分组一</span>
-					<el-menu-item index="1-1">选项1</el-menu-item>
-					<el-menu-item index="1-2">选项2</el-menu-item>
-				</el-menu-item-group>
-				<el-menu-item-group title="分组2">
-					<el-menu-item index="1-3">选项3</el-menu-item>
+					<el-menu-item index="1-1" to='/home/category/list'>
+						<router-link to="/home/category/list">分类</router-link>
+					</el-menu-item>
+					<el-menu-item index="1-2">工具</el-menu-item>
+					<el-menu-item index="1-2">系列</el-menu-item>
+					<el-menu-item index="1-2">站点</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
 			<el-submenu index="2" class='sub_menu'>
 				<template slot="title">
-					<i class="el-icon-message"></i>
-					<span slot="title">链接管理</span>
+					<i class="fa fa-book"></i>
+					<span slot="title">博文管理</span>
 				</template>
 				<el-menu-item-group>
-					<span slot="title">分组一</span>
-					<el-menu-item index="2-1">选项1</el-menu-item>
-					<el-menu-item index="2-2">选项2</el-menu-item>
+					<el-menu-item index="2-1">博文列表</el-menu-item>
+					<el-menu-item index="2-2">新增博文</el-menu-item>
 				</el-menu-item-group>
-				<el-menu-item-group title="分组2">
-					<el-menu-item index="2-3">选项3</el-menu-item>
+			</el-submenu>
+			<el-submenu index="3" class='sub_menu'>
+				<template slot="title">
+					<i class="fa fa-user-o"></i>
+					<span slot="title">用户管理</span>
+				</template>
+				<el-menu-item-group>
+					<el-menu-item index="3-1">用户列表</el-menu-item>
+				</el-menu-item-group>
+			</el-submenu>
+			<el-submenu index="4" class='sub_menu'>
+				<template slot="title">
+					<i class="fa fa-comment-o"></i>
+					<span slot="title">评论管理</span>
+				</template>
+				<el-menu-item-group>
+					<el-menu-item index="4-1">评论列表</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
 		</el-menu>
@@ -73,5 +87,9 @@
 	}
 	.sub_menu ul{
 		/*background: inherit !important;*/
+	}
+	.el-menu-item a{
+		text-decoration: none;
+		color: inherit;
 	}
 </style>

@@ -31,7 +31,7 @@
 <script>
 	import * as types from '../store/types';
 	import { userLogin } from "../api/api.js";
-	import { saveUser, saveToken } from "../util/user.js";
+	import { saveUser, saveToken, requestAndSaveUser } from "../util/user.js";
 	export default {
 		data() {
 			return {
@@ -47,43 +47,62 @@
 					if(result) {
 						var self = this;
 						var loginParam = this.loginUser;
-						var user = {
-							name: 'sangaizhi',
-							avatar: 'https://avatars2.githubusercontent.com/u/17513528?v=4&s=460',
-						};
-						//						saveToken("QWERTYUIOP");
-						saveUser(user);
-						self.token = "QWERTYUIOP";
-						// 此操作会将token 保存待localStorage
-						self.$store.commit(types.LOGIN, self.token);
-						let redirect = decodeURIComponent(self.$route.query.redirect || '/');
-						self.$router.push({
-							path: "/home"
-						})
-						//						userLogin(loginParam).then(data => {
-						//							let response = data.data;
-						//							let responseStatus = response.status;
-						//							if(responseStatus) {
-						//								// 登录成功
-						//								// 保存用户信息
-						//								// 保存 token 到本地
-						//								self.token = result.data;
-						//								self.$store.commit(types.LOGIN, self.token);
-						//								// 重定向页面到登录之前的url
-						//								let redirect = decodeURIComponent(self.$route.query.redirect || '/');
-						//								self.$router.push({
-						//									path: redirect
-						//								})
-						//							} else {
-						//								//登录失败
-						//								// 提示失败信息
-						//								var errorMsg = response.msg;
-						//								this.$message({
-						//									showClose: true,
-						//									message: errorMsg,
-						//									type: 'error'
-						//								});
-						//							}
+						userLogin(loginParam).then(function(response) {
+							let data = response.data;
+							let status = response.status;
+							if(status) {
+								// 登录成功
+
+								// 保存 token 到本地
+								self.token = data;
+								self.$store.commit(types.LOGIN, self.token);
+								self.$cookie.set('token', data, {expires: '1h', domain: 'localhost',path:'/blog-admin'});
+								var tokenParam = {
+									'token': self.token
+								}
+								// 请求用户信息
+								requestAndSaveUser(tokenParam).then(function(resp) {
+									var respStatus = resp.status;
+									if(respStatus) {
+										// 保存用户信息
+										saveUser(resp.data);
+										// 重定向页面到登录之前的url
+										let redirect = decodeURIComponent(self.$route.query.redirect || '/');
+										self.$router.push({
+											path: "/home"
+										})
+									} else {
+										var errorMsg = resp.msg;
+										self.$message({
+											showClose: true,
+											message: errorMsg,
+											type: 'error'
+										});
+									}
+								}, function(response) {
+									self.$message({
+										showClose: true,
+										message: "获取用户信息失败",
+										type: 'error'
+									});
+								});
+							} else {
+								//登录失败
+								// 提示失败信息
+								var errorMsg = response.msg;
+								self.$message({
+									showClose: true,
+									message: errorMsg,
+									type: 'error'
+								});
+							}
+						}, function() {
+							self.$message({
+								showClose: true,
+								message: "登录失败",
+								type: 'error'
+							});
+						});
 					}
 				});
 			}
@@ -115,13 +134,14 @@
 	}
 	
 	.login-form-container form {
-		margin: 50px 30px;
+		margin: 50px 17%;
 		display: inline-block;
 		width: 66%;
 	}
 	
 	.form-title {
 		margin-bottom: 40px;
+		text-align: center;
 	}
 	
 	.form-title label {

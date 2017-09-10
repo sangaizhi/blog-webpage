@@ -6,10 +6,10 @@ import qs from 'qs';
 
 // axios 配置
 
-
 // http request 拦截器
 axios.interceptors.request.use(
 	config => {
+		
 		config.data = JSON.stringify(config.data);
 		config.headers = {
 			'Content-Type': 'application/x-www-form-urlencoded'
@@ -47,17 +47,18 @@ axios.interceptors.response.use(
 
 
 var axiosInstance = axios.create({
-	baseURL: 'https://localhost:8081/blog-portal-manager',
 	timeout: 100000,
 	headers: {
 		'Content-Type': 'application/x-www-form-urlencoded'
 	},
+	withCredentials:true,
 	transformRequest: [function(data) {
 		data = qs.stringify(data)
 		return data;
 	}]
 });
 
+axiosInstance.withCredentials=true;
 
 export default axiosInstance;
 
@@ -70,7 +71,6 @@ export function fetch(url, params = {}) {
 		}).catch(err => {
 			reject(err)
 		});
-
 	});
 }
 

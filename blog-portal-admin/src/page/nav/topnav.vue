@@ -7,15 +7,16 @@
 					<img width="30px" height="30px" v-bind:src="user.avatar" />
 				</div>
 				<div class="user-name" @click="userDownShow($event)">
-					<span v-html="user.name"></span>
-					<i class="el-icon-arrow-down"></i>
+					<p>
+						<span v-html="user.name"></span>
+						<i class="el-icon-arrow-down"></i>
+					</p>
 					<section class='user-down' style="display: none;">
 						<p>
 							<a @click="logout($event)">退出</a>
 						</p>
 					</section>
 				</div>
-				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</el-col>
@@ -23,6 +24,9 @@
 </template>
 <script>
 	import $ from 'jquery';
+	import * as types from '../../store/types';
+	import { userLogout } from "../../api/api.js";
+	import { saveUser, saveToken, requestAndSaveUser } from "../../util/user.js";
 	export default {
 		data() {
 			return {
@@ -44,8 +48,29 @@
 				} else {
 					$('.user-down').slideUp();
 				}
+			},
+			logout:function(event){
+				var token = this.$store.state.token;
+				var self = this;
+				console.log(userLogout);
+				var params = {
+					'token':token
+				}
+				userLogout(params).then(function(){
+					self.$store.commit(types.LOGOUT);
+					self.$router.push({
+						path: "/login"
+					})
+				},function(){
+					self.$message({
+						showClose: true,
+						message: "退出失败",
+						type: 'error'
+					});
+				});
 			}
 		}
+		
 	}
 </script>
 <style>
@@ -72,10 +97,10 @@
 		text-align: center;
 		font-size: 20px;
 		background: #13CE66;
+		float: left;
 	}
 	
 	.user-container {
-		height: 48px !important;
 		float: right;
 	}
 	
@@ -83,6 +108,7 @@
 		display: inline-block;
 		height: 50px;
 		width: 50px;
+		float: left;
 	}
 	
 	.user-container .user-avatar img {
@@ -92,10 +118,10 @@
 	}
 	
 	.user-container .user-name {
+		float: right;
 		width: 100px;
 		height: 50px;
 		line-height: 50px;
-		top: -21px;
 		position: relative;
 		font-size: 14px;
 		cursor: pointer;
@@ -110,5 +136,6 @@
 		position: absolute;
 		width: 100px;
 		text-align: center;
+		z-index:999;
 	}
 </style>

@@ -3,6 +3,11 @@ import App from './App.vue';
 // 导入 element ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
+// 导入 vue-cookie
+import vueCookie from 'vue-cookie';
+// 导入 moment
+import moment from 'moment';
+Object.defineProperty(Vue.prototype, '$moment', { value: moment });
 
 // 导入本地存储
 import store from './store/store.js';
@@ -13,8 +18,10 @@ import './validate/validate.js';
 
 // 导入自定义 css
 import './assets/css/style.css';
+import './assets/css/font_awesome_element.css';
 
 Vue.use(ElementUI);
+Vue.use(vueCookie);
 
 
 

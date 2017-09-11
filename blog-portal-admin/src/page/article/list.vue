@@ -4,18 +4,24 @@
 			<el-button size='small' type='primary' @click.native.prevent="addCatrgory()">新增分类</el-button>
 		</div>
 		<div class="category-list">
-			<el-table :data="categoryList" v-loading.body="loading" stripe border height="100%" style="width: auto">
-				<el-table-column prop="name" label="名称" width="180">
+			<el-table :data="articleList" v-loading.body="loading" stripe border height="100%" style="width: auto">
+				<el-table-column prop="title" label="标题" width="180">
 				</el-table-column>
-				<el-table-column prop="remark" label="说明" width="180">
+				<el-table-column prop="summary" label="概要" width="180">
 				</el-table-column>
-				<el-table-column prop="createTime" label="创建时间"  :formatter="dateFormat"  >
+				<el-table-column prop="categoryName" label="所属分类"   >
+				</el-table-column>
+				<el-table-column prop="star" label="星数">
+				</el-table-column>
+				<el-table-column prop="userName" label="作者">
+				</el-table-column>
+				<el-table-column prop="createTime" label="发布时间" :formatter='dateFormat'>
 				</el-table-column>
 				<el-table-column fixed="right" label="操作" width="120">
 					<template scope="scope">
-						<el-button @click.native.prevent="handleDelete(scope.$index, scope.row.id, categoryList)" type="text" size="small">移除
+						<el-button @click.native.prevent="handleDelete(scope.$index, scope.row.id, articleList)" type="text" size="small">移除
 						</el-button>
-						<el-button @click.native.prevent="handleEdit(scope.$index, scope.row.id, categoryList)" type="text" size="small">编辑
+						<el-button @click.native.prevent="handleEdit(scope.$index, scope.row.id, articleList)" type="text" size="small">编辑
 						</el-button>
 					</template>
 				</el-table-column>
@@ -29,13 +35,13 @@
 <script>
 	import $ from 'jquery';
 	import * as types from '../../store/types';
-	import { requestCategoryList, deletrCategory } from "../../api/api.js";
+	import { requestArticleList, deletrCategory } from "../../api/api.js";
 	import { Loading } from 'element-ui';
 
 	export default {
 		data() {
 			return {
-				categoryList: [],
+				articleList: [],
 				loading: true
 			}
 		},
@@ -48,9 +54,9 @@
 			var loadingOptions = {
 				fullscreen: true
 			}
-			requestCategoryList(tokenParam).then(function(response) {
+			requestArticleList(tokenParam).then(function(response) {
 				if(response.status) {
-					self.categoryList = response.data;
+					self.articleList = response.data;
 					self.loading=false;
 				} else {
 					self.$router.push({

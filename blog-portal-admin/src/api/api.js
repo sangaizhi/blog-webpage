@@ -14,12 +14,15 @@ export const userLogin = params => {
 };
 
 /**
- * 通过token 获取用户信息 
+ * 请求登出
  */
 export const userLogout = params => {
 	return axiosInstance.get(`${ssoUrl}/admin/logout`, {params:params}).then(res=>res.data);
 }
 
+/**
+ * 通过token 获取用户信息 
+ */
 export const getUserByToken = params => {
 	return axiosInstance.get(`${ssoUrl}/admin/getAdminByToken`, {params:params}).then(res => res.data);
 };
@@ -44,3 +47,24 @@ export const requestCategoryList = params =>{
  export const addCategory = params => {
  	return axiosInstance.post(`${domainUrl}/category/add`, params).then(res => res.data);
  }
+
+/**
+ * 获取分类信息
+ */
+export const getCategoryById = params => {
+		return axiosInstance.get(`${domainUrl}/category/getById/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 修改分类信息
+ */
+export const editCategory = params => {
+	return axiosInstance.post(`${domainUrl}/category/edit`, params).then(res => res.data);
+}
+
+/**
+ * 请求博文列表
+ */
+export const requestArticleList = params => {
+	return axiosInstance.get(`${domainUrl}/article/list`,{params:params}).then(res => res.data);
+}

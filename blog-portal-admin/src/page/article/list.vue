@@ -1,13 +1,13 @@
 <template>
 	<div id="category">
 		<div class="category-op">
-			<el-button size='small' type='primary' @click.native.prevent="addCatrgory()">新增分类</el-button>
+			<el-button size='small' type='primary' @click.native.prevent="addArticle()">新增文章</el-button>
 		</div>
 		<div class="category-list">
 			<el-table :data="articleList" v-loading.body="loading" stripe border height="100%" style="width: auto">
 				<el-table-column prop="title" label="标题" width="180">
 				</el-table-column>
-				<el-table-column prop="summary" label="概要" width="180">
+				<el-table-column prop="summary" label="概要" width="180" :formatter='substringFormat'>
 				</el-table-column>
 				<el-table-column prop="categoryName" label="所属分类"   >
 				</el-table-column>
@@ -80,9 +80,20 @@
 				}
 				return this.$moment(date).format("YYYY-MM-DD HH:mm:ss");
 			},
-			addCatrgory() {
+			//
+			substringFormat:function(row, column){
+				var val = row[column.property];
+				if(val == undefined){
+					return  "";
+				}
+				if(val.length >= 50){
+					val = val.substring(0, 49);
+				}
+				return val;
+			},
+			addArticle() {
 				this.$router.push({
-					path: "/home/category/add"
+					path: "/home/article/add"
 				})
 			},
 			handleEdit(index, id, rows) {

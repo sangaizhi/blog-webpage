@@ -9,6 +9,10 @@ import vueCookie from 'vue-cookie';
 import moment from 'moment';
 Object.defineProperty(Vue.prototype, '$moment', { value: moment });
 
+// 导入 mavon-editor：一款  Markdown 插件
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+
 // 导入本地存储
 import store from './store/store.js';
 // 导入 vue-router
@@ -22,6 +26,7 @@ import './assets/css/font_awesome_element.css';
 
 Vue.use(ElementUI);
 Vue.use(vueCookie);
+Vue.use(mavonEditor);
 
 
 

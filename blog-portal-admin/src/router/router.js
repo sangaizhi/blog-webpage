@@ -12,6 +12,7 @@ import categoryList from '../page/category/list.vue';
 import categoryAdd from '../page/category/add.vue';
 import categoryEdit from '../page/category/edit.vue';
 import articleList from '../page/article/list.vue';
+import articleAdd from '../page/article/add.vue';
 // import axiosInstance from '../util/http';
 
 Vue.use(VueRouter)
@@ -65,6 +66,13 @@ const routes = [{
 				component:articleList,
 				meta: {
 					requireAuth: true,
+				}
+			},
+			{
+				path:'article/add',
+				component:articleAdd,
+				meta:{
+					requireAuth:true
 				}
 			}
 		]

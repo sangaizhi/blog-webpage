@@ -4,8 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var lang = require('highlight.js-async-webpack/src/file.lang.hljs.js');
 
 var _entry= {
-    build: './src/main.js', // 原始入口
-    vue: ['vue']
+    build: './src/main.js' // 原始入口
 };
 for (var i = 0; i < lang.length; i++) {
     _entry[lang[i]] = ['mavon-editor/dist/js/' + lang[i] + '.js']

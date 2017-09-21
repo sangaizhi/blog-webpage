@@ -191,7 +191,6 @@
 		},
 		mounted() {
 			var token = window.localStorage.getItem("token");
-			console.log(token);
 			if(null != token && token != 'undefined') {
 				var userInfo = window.localStorage.getItem("userInfo");
 				this.user.nickname = window.localStorage.getItem("userInfo.nickname");
@@ -202,10 +201,8 @@
 		},
 		methods: {
 			handleOpen(key, keyPath) {
-				console.log(key, keyPath);
 			},
 			handleClose(key, keyPath) {
-				console.log(key, keyPath);
 			}
 		}
 	}

@@ -267,16 +267,6 @@
 		},
 		mounted() {
 			var token = window.localStorage.getItem("token");
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
-			console.log(token);
 			
 			if(null != token && token != 'undefined') {
 				var userInfo = window.localStorage.getItem("userInfo");

@@ -1,9 +1,9 @@
 <template>
-	<div id="category">
-		<div class="category-op">
+	<div id="category" class="table-container">
+		<div class="table-top-op">
 			<el-button size='small' type='primary' @click.native.prevent="addCatrgory()">新增分类</el-button>
 		</div>
-		<div class="category-list">
+		<div class="category-list table-list">
 			<el-table :data="categoryList" v-loading.body="loading" stripe border height="100%" style="width: auto">
 				<el-table-column prop="name" label="名称" width="180">
 				</el-table-column>
@@ -105,25 +105,6 @@
 	}
 </script>
 <style>
-	#category {
-		height: 100%;
-		width: 100%;
-	}
-	
-	.category-op {
-		height: 50px;
-		line-height: 50px;
-		padding: 0 15px;
-	}
-	
-	.category-list {
-		height: calc(100% - 60px);
-		bottom: 10px;
-		top: 50px;
-		position: absolute;
-		width: 100%;
-	}
-	
 	.category-list .el-table {
 		margin: 0 15px;
 		height: 100%;

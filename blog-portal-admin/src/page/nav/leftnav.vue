@@ -22,13 +22,16 @@
 			<el-submenu index="2" class='sub_menu'>
 				<template slot="title">
 					<i class="fa fa-book"></i>
-					<span slot="title">博文管理</span>
+					<span slot="title">文章管理</span>
 				</template>
 				<el-menu-item-group>
 					<el-menu-item index="2-1">
-						<router-link to="/home/article/list">博文列表</router-link>
+						<router-link to="/home/article/add">新增文章</router-link>
 					</el-menu-item>
-					<el-menu-item index="2-2">新增博文</el-menu-item>
+					<el-menu-item index="2-2">
+						<router-link to="/home/article/list">文章列表</router-link>
+					</el-menu-item>
+					
 				</el-menu-item-group>
 			</el-submenu>
 			<el-submenu index="3" class='sub_menu'>

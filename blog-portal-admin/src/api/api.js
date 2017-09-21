@@ -52,7 +52,7 @@ export const requestCategoryList = params =>{
  * 获取分类信息
  */
 export const getCategoryById = params => {
-		return axiosInstance.get(`${domainUrl}/category/getById/${params}`,{}).then(res => res.data);
+	return axiosInstance.get(`${domainUrl}/category/getById/${params}`,{}).then(res => res.data);
 }
 
 /**
@@ -67,4 +67,39 @@ export const editCategory = params => {
  */
 export const requestArticleList = params => {
 	return axiosInstance.get(`${domainUrl}/article/list`,{params:params}).then(res => res.data);
+}
+
+/**
+ * 新增博文
+ */
+export const addArticle = params => {
+	return axiosInstance.post(`${domainUrl}/article/add`, params).then(res => res.data);
+}
+
+/**
+ * 通過 Id 获取详细信息
+ */
+export const getArticleById = params =>{
+	return axiosInstance.get(`${domainUrl}/article/getById/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 刪除博文
+ */
+export const deleteArticle = params => {
+	return axiosInstance.get(`${domainUrl}/article/delete/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 刪除博文标签
+ */
+export const deleteArticleLabel = params =>{
+	return axiosInstance.post(`${domainUrl}/article/deleteLabel`, params).then(res => res.data);
+}
+
+/**
+ * 获取用户列表
+ */
+export const requestUserList = params => {
+	return axiosInstance.get(`${domainUrl}/user/list`,{params:params}).then(res => res.data);
 }

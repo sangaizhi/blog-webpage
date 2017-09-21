@@ -27,7 +27,6 @@
 		data(){return {}},
 		props:['categoryId'],
 		mounted(){
-			console.log(this.categoryId)
 		}
 	}
 </script>

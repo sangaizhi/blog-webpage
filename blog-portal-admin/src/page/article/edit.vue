@@ -49,7 +49,7 @@
 
 <script>
 	import mavonEditor from 'mavon-editor';
-	import { requestCategoryList,getArticleById } from "../../api/api.js";
+	import { requestCategoryList,getArticleById,editArticle } from "../../api/api.js";
 	export default {
 		data() {
 			return {
@@ -122,7 +122,7 @@
 			}, function(response) {
 				self.$message({
 					showClose: true,
-					message: "加載失敗",
+					message: "加载失败",
 					type: 'error'
 				});
 			});
@@ -130,20 +130,37 @@
 		},
 		methods: {
 			submitForm(formName) {
-//				var self = this;
-//				this.$refs[formName].validate((valid) => {
-//					if(valid) {
-//						var copyArticle = self.article;
-//						copyArticle.content = $(".v-show-content").html();
-//						addArticle(copyArticle).then(function(response){
-//							
-//						},function(){
-//							
-//						});
-//					} else {
-//						return false;
-//					}
-//				});
+				var self = this;
+				this.$refs[formName].validate((valid) => {
+					if(valid) {
+						var copyArticle = self.article;
+						copyArticle.content = $(".v-show-content").html();
+						editArticle(copyArticle).then(function(response){
+							if(response.status){
+								self.$message({
+									showClose: true,
+									message: "保存成功",
+									type: 'success'
+								});
+								self.$router.go(-1);
+							}else{
+								self.$message({
+									showClose: true,
+									message: response.msg,
+									type: 'error'
+								});
+							}
+						},function(){
+							self.$message({
+									showClose: true,
+									message: "保存失败",
+									type: 'error'
+								});
+						});
+					} else {
+						return false;
+					}
+				});
 			},
 		},
 		components: [mavonEditor]

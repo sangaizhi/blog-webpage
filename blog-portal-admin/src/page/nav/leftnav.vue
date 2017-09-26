@@ -40,7 +40,12 @@
 					<span slot="title">用户管理</span>
 				</template>
 				<el-menu-item-group>
-					<el-menu-item index="3-1">用户列表</el-menu-item>
+					<el-menu-item index="3-1">
+						<router-link to="/home/user/add">新增用户</router-link>
+					</el-menu-item>
+					<el-menu-item index="3-2">
+						<router-link to="/home/user/list">用户列表</router-link>
+					</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
 			<el-submenu index="4" class='sub_menu'>

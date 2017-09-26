@@ -14,6 +14,8 @@ import categoryEdit from '../page/category/edit.vue';
 import articleList from '../page/article/list.vue';
 import articleAdd from '../page/article/add.vue';
 import articleEdit from '../page/article/edit.vue';
+import userList from '../page/user/list.vue';
+import userAdd from '../page/user/add.vue';
 // import axiosInstance from '../util/http';
 
 Vue.use(VueRouter)
@@ -78,7 +80,21 @@ const routes = [{
 			},
 			{
 				path:'article/edit/:id',
-					component:articleEdit,
+				component:articleEdit,
+				meta:{
+					requireAuth:true
+				}
+			},
+			{
+				path:'user/list',
+				component:userList,
+				meta:{
+					requireAuth:true
+				}
+			},
+			{
+				path:'user/add',
+				component:userAdd,
 				meta:{
 					requireAuth:true
 				}

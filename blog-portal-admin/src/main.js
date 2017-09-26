@@ -19,6 +19,8 @@ import store from './store/store.js';
 import router from './router/router.js';
 // 导入验证 js
 import './validate/validate.js';
+// 导入系统常量js
+import './assets/js/constants.js';
 
 // 导入自定义 css
 import './assets/css/style.css';

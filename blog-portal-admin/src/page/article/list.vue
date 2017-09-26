@@ -1,7 +1,7 @@
 <template>
 	<div id="article" class="table-container">
 		<div class="table-top-op">
-			 <el-select v-model='selectCategory' @change="selectCatgoryChange" placeholder="请选择" :clearable="selectCategoryClear">
+			 <el-select v-model='selectCategory' size="small" @change="selectCatgoryChange" placeholder="请选择" :clearable="selectCategoryClear">
 			    <el-option
 			      v-for="item in categoryList"
 			      :key="item.id"
@@ -17,7 +17,7 @@
 				</el-table-column>
 				<el-table-column prop="summary" label="概要" :formatter='substringFormat'>
 				</el-table-column>
-				<el-table-column prop="categoryName" width="150" label="所属分类"   :filters="filterCategoryList" :filter-method="filterCategory">
+				<el-table-column prop="categoryName" width="150" label="所属分类" :filters="filterCategoryList" :filter-method="filterCategory">
 				</el-table-column>
 				<el-table-column prop="star" width="80" label="星数">
 				</el-table-column>
@@ -138,7 +138,6 @@
 				return val;
 			},
 			deletaLabel(id, rowIndex, label) {
-
 				this.$confirm('确认删除该标签吗?', '提示', {
 					confirmButtonText: '确定',
 					cancelButtonText: '取消',
@@ -214,7 +213,6 @@
 
 			},
 			handleCurrentChange(val) {
-				console.log("handleCurrentChange:"+val);
 				var self = this;
 				var token = this.$store.state.token;
 				var params = {

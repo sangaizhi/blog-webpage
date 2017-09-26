@@ -26,7 +26,8 @@
 	import $ from 'jquery';
 	import * as types from '../../store/types';
 	import { userLogout } from "../../api/api.js";
-	import { saveUser, saveToken, requestAndSaveUser } from "../../util/user.js";
+	import { saveUser, saveToken, requestAndSaveUser } from "../../util/storage.js";
+	import {SystemConstants} from "../../assets/js/constants.js";
 	export default {
 		data() {
 			return {
@@ -39,7 +40,12 @@
 		mounted() {
 			var user = JSON.parse(window.localStorage.getItem("user"));
 			this.user.name = user.name;
-			this.user.avatar = user.avatar;
+			if(user.avatar == undefined || user.avatar == ''){
+				this.user.avatar = SystemConstants.DEFAULT_USER_AVATAR;
+			}else{
+				this.user.avatar = user.avatar;
+			}
+			
 		},
 		methods: {
 			userDownShow: function(event) {

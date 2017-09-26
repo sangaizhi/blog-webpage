@@ -31,7 +31,7 @@
 <script>
 	import * as types from '../store/types';
 	import { userLogin } from "../api/api.js";
-	import { saveUser, saveToken, requestAndSaveUser } from "../util/user.js";
+	import { saveUser, saveToken, requestAndSaveUser } from "../util/storage.js";
 	export default {
 		data() {
 			return {
@@ -56,7 +56,7 @@
 								// 保存 token 到本地
 								self.token = data;
 								self.$store.commit(types.LOGIN, self.token);
-								self.$cookie.set('token', data, {expires: '1h', domain: 'localhost',path:'/blog-admin'});
+								self.$cookie.set('token', data, {expires: '1h', domain:'localhost'});
 								var tokenParam = {
 									'token': self.token
 								}
@@ -152,7 +152,7 @@
 		font-size: 20px;
 	}
 	
-	.el-form-item button {
+	.login-form-container .el-form-item button {
 		width: 100%;
 	}
 	

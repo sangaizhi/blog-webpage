@@ -77,6 +77,13 @@ export const addArticle = params => {
 }
 
 /**
+ * 编辑博文
+ */
+export const editArticle = params => {
+	return axiosInstance.post(`${domainUrl}/article/edit`, params).then(res => res.data);
+}
+
+/**
  * 通過 Id 获取详细信息
  */
 export const getArticleById = params =>{
@@ -102,4 +109,82 @@ export const deleteArticleLabel = params =>{
  */
 export const requestUserList = params => {
 	return axiosInstance.get(`${domainUrl}/user/list`,{params:params}).then(res => res.data);
+}
+
+/**
+ * 删除用户列表
+ */
+export const deleteUser = params => {
+	return axiosInstance.get(`${domainUrl}/user/delete/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 激活用户
+ */
+export const activeUser = params => {
+	return axiosInstance.get(`${domainUrl}/user/active/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 锁定用户
+ */
+export const lockUser = params => {
+	return axiosInstance.get(`${domainUrl}/user/lock/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 解锁用户
+ */
+export const unLockUser = params => {
+	return axiosInstance.get(`${domainUrl}/user/unlock/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 禁用用户
+ */
+export const disableUser = params => {
+	return axiosInstance.get(`${domainUrl}/user/disable/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 启用用户
+ */
+export const enableUser = params => {
+	return axiosInstance.get(`${domainUrl}/user/enable/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 根据Id获取用户信息
+ */
+export const getUserById = params => {
+	return axiosInstance.get(`${domainUrl}/user/getById/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 新增用户
+ */
+export const addUser = params => {
+	return axiosInstance.post(`${domainUrl}/user/add`, params).then(res => res.data);
+}
+
+/**
+ * 核对用户的手机号是否占用
+ */
+export const checkPhoneUsable = params => {
+	return axiosInstance.get(`${domainUrl}/user/checkPhoneUsable/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 核对用户的邮箱是否占用
+ * 由于邮箱有后缀，所以采用 get 请求的时候, "."后面的会被砍掉
+ */
+export const checkEmailUsable = params => {
+	return axiosInstance.post(`${domainUrl}/user/checkEmailUsable`,params).then(res => res.data);
+}
+
+/**
+ * 编辑用户
+ */
+export const exitUser = params => {
+	return axiosInstance.post(`${domainUrl}/user/edit`, params).then(res => res.data);
 }

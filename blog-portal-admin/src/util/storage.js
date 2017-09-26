@@ -27,3 +27,5 @@ export function logout() {
 export const requestAndSaveUser = params => {
 	return getUserByToken(params).then(res => res);
 }
+
+

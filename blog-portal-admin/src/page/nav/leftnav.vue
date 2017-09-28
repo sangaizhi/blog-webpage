@@ -14,9 +14,11 @@
 					<el-menu-item index="1-1" to='/home/category/list'>
 						<router-link to="/home/category/list">分类</router-link>
 					</el-menu-item>
-					<el-menu-item index="1-2">工具</el-menu-item>
-					<el-menu-item index="1-2">系列</el-menu-item>
-					<el-menu-item index="1-2">站点</el-menu-item>
+					<el-menu-item index="1-2" to='/home/kitbox/list'>
+						<router-link to="/home/kitbox/list">工具集</router-link>
+					</el-menu-item>
+					<el-menu-item index="1-3">系列</el-menu-item>
+					<el-menu-item index="1-4">站点</el-menu-item>
 				</el-menu-item-group>
 			</el-submenu>
 			<el-submenu index="2" class='sub_menu'>

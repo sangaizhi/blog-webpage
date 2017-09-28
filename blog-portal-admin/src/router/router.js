@@ -16,6 +16,7 @@ import articleAdd from '../page/article/add.vue';
 import articleEdit from '../page/article/edit.vue';
 import userList from '../page/user/list.vue';
 import userAdd from '../page/user/add.vue';
+import kitboxList from '../page/kitbox/list.vue';
 // import axiosInstance from '../util/http';
 
 Vue.use(VueRouter)
@@ -96,6 +97,13 @@ const routes = [{
 				path:'user/add',
 				component:userAdd,
 				meta:{
+					requireAuth:true
+				}
+			},
+			{
+				path:'kitbox/list',
+				component:kitboxList,
+				mata:{
 					requireAuth:true
 				}
 			}

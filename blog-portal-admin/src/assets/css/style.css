@@ -62,3 +62,18 @@ a {
 .search-text{
 	width: 200px;
 }
+.mini-input{
+	width: 50px;
+}
+.small-input{
+	width:100px;
+}
+.large-input{
+	width: 150px;
+}
+.larger-input{
+	width: 200px;
+}
+.largest-input{
+	width:250px;
+}

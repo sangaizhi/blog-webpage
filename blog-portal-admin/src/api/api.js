@@ -185,6 +185,35 @@ export const checkEmailUsable = params => {
 /**
  * 编辑用户
  */
-export const exitUser = params => {
+export const editUser = params => {
 	return axiosInstance.post(`${domainUrl}/user/edit`, params).then(res => res.data);
+}
+
+
+/**
+ * 请求工具箱列表
+ */
+export const requestKitboxList = params =>{
+	return axiosInstance.get(`${domainUrl}/kitbox/list`,{params:params}).then(res => res.data);
+}
+
+/**
+ * 新增工具箱
+ */
+export const addKitbox = params =>{
+	return axiosInstance.post(`${domainUrl}/kitbox/add`, params).then(res => res.data);
+}
+
+/*
+ * 重命名工具箱
+ */
+export const renameKitbox = params =>{
+	return axiosInstance.get(`${domainUrl}/kitbox/rename/${params}`,{}).then(res => res.data);
+}
+
+/**
+ * 删除工具集
+ */
+export const deleteKitBox = params =>{
+	return axiosInstance.get(`${domainUrl}/kitbox/delete/${params}`,{}).then(res => res.data);
 }

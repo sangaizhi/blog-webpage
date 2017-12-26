@@ -4,7 +4,8 @@
 			<el-radio-button :label="false">展开</el-radio-button>
 			<el-radio-button :label="true">收起</el-radio-button>
 		</el-radio-group>-->
-		<el-menu default-active="1-4-1" class="left-nav-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse" theme="dark">
+		<el-menu default-active="1-4-1" class="left-nav-menu" @open="handleOpen" @close="handleClose" :collapse="isCollapse" theme="dark"  background-color="#1F2D3D"
+      text-color="#fff">
 			<el-submenu index="1" class='sub_menu'>
 				<template slot="title" class="sub_menu_title">
 					<i class="fa fa-bars"></i>
